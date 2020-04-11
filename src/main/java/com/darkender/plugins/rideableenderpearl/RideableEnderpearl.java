@@ -22,10 +22,10 @@ public class RideableEnderpearl extends JavaPlugin implements Listener
         reload();
     }
     
-    @EventHandler(priority = EventPriority.MONITOR)
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onProjectileLaunch(ProjectileLaunchEvent event)
     {
-        if(event.isCancelled() || !(event.getEntity().getShooter() instanceof Player) || event.getEntityType() != EntityType.ENDER_PEARL)
+        if(!(event.getEntity().getShooter() instanceof Player) || event.getEntityType() != EntityType.ENDER_PEARL)
         {
             return;
         }
@@ -42,14 +42,19 @@ public class RideableEnderpearl extends JavaPlugin implements Listener
     {
         saveDefaultConfig();
         reloadConfig();
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+        
         boolean showParticles = getConfig().getBoolean("enderpearl-particles");
         if(showParticles && particleTask == null)
         {
+            // If particles have just been enabled, start the task
             particleTask = new ParticleTask();
             particleTask.runTaskTimer(this, 1L, 1L);
         }
         else if(!showParticles && particleTask != null)
         {
+            // If particles have just been disabled, stop the task
             particleTask.cancel();
             particleTask = null;
         }
