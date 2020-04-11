@@ -1,0 +1,20 @@
+name: RideableEnderpearl
+version: ${project.version}
+main: com.darkender.plugins.rideableenderpearl.RideableEnderpearl
+author: Techdoodle
+api-version: 1.15
+description: A simple plugin allowing players to ride enderpearls through the sky
+website: https://plugins.darkender.com
+
+commands:
+  rideableenderpearl:
+    aliases: rep
+    description: Reload the RideableEnderpearl config
+    permission: rideableenderpearl.reload
+
+permissions:
+  rideableenderpearl.ride:
+    description: Permission to ride an enderpearl. Enderpearls will work normally for players without this permission.
+    default: true
+  rideableenderpearl.reload:
+    description: Permission to reload the config
