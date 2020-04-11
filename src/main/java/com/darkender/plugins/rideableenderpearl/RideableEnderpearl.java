@@ -16,7 +16,9 @@ public class RideableEnderpearl extends JavaPlugin implements Listener
     public void onEnable()
     {
         getServer().getPluginManager().registerEvents(this, this);
-        getCommand("rideableenderpearl").setExecutor(new REPCommand(this));
+        REPCommand repCommand = new REPCommand(this);
+        getCommand("rideableenderpearl").setExecutor(repCommand);
+        getCommand("rideableenderpearl").setTabCompleter(repCommand);
         reload();
     }
     
