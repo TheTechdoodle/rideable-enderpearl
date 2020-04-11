@@ -15,4 +15,7 @@ Commands:
 Config:
 ```yaml
 enderpearl-particles: true
+prevent-suffocation-damage: true
+prevent-throwing-while-riding: true
+prevent-dismount: true
 ```

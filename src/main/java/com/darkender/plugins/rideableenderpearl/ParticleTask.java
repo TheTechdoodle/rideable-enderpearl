@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public class ParticleTask extends BukkitRunnable
 {
-    private List<UUID> track = new ArrayList<UUID>();
+    private final List<UUID> track = new ArrayList<UUID>();
     
     public void run()
     {
