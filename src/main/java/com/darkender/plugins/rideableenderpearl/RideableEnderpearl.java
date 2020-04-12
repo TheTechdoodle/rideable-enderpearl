@@ -54,6 +54,10 @@ public class RideableEnderpearl extends JavaPlugin implements Listener
         }
         
         Player p = (Player) event.getEntity().getShooter();
+        if(!p.hasPermission("rideableenderpearl.ride"))
+        {
+            return;
+        }
         
         // Prevent throwing another enderpearl while currently riding one
         if(preventThrowingWhileRiding && p.isInsideVehicle() &&
