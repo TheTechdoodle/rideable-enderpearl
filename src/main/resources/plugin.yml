@@ -2,7 +2,7 @@ name: RideableEnderpearl
 version: ${project.version}
 main: com.darkender.plugins.rideableenderpearl.RideableEnderpearl
 author: Techdoodle
-api-version: 1.15
+api-version: 1.13
 description: A simple plugin allowing players to ride enderpearls through the sky
 website: https://plugins.darkender.com
 
