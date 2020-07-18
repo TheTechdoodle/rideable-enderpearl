@@ -22,15 +22,28 @@ public class RideableEnderpearl extends JavaPlugin implements Listener
     private boolean preventSuffocationDamage;
     private boolean preventThrowingWhileRiding;
     private boolean preventDismount;
+    private WorldGuardChecker worldGuardChecker = null;
     
     @Override
     public void onEnable()
     {
+        getLogger().info("Trying to start");
+        
         getServer().getPluginManager().registerEvents(this, this);
         REPCommand repCommand = new REPCommand(this);
         getCommand("rideableenderpearl").setExecutor(repCommand);
         getCommand("rideableenderpearl").setTabCompleter(repCommand);
         reload();
+    }
+    
+    @Override
+    public void onLoad()
+    {
+        if(getServer().getPluginManager().getPlugin("WorldGuard") != null)
+        {
+            getLogger().info("Enabling WorldGuard integration");
+            worldGuardChecker = new WorldGuardChecker();
+        }
     }
     
     @EventHandler(ignoreCancelled = true)
@@ -53,6 +66,11 @@ public class RideableEnderpearl extends JavaPlugin implements Listener
         
         Player p = (Player) event.getEntity().getShooter();
         if(!p.hasPermission("rideableenderpearl.ride"))
+        {
+            return;
+        }
+        
+        if(worldGuardChecker != null && !worldGuardChecker.canRide(p))
         {
             return;
         }

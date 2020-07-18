@@ -2,6 +2,8 @@
 
 This simple plugin allows players to fly across the sky on any enderpearls they throw.
 
+The WorldGuard flag "ride-enderpearl" can be set to "deny" to prevent riding enderpearls in a region.
+
 Permissions:
  - rideableenderpearl.ride\
    Allows the player to use the plugin. Granted by default.
